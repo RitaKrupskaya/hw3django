@@ -46,6 +46,7 @@ class Product(models.Model):
     updated_at = models.DateTimeField(
         verbose_name="Дата последнего изменения", auto_now=True
     )
+    manufactured_at = models.DateTimeField(auto_now=True, verbose_name="Дата производства", blank=True, null=True)
 
     def __str__(self):
         return f"{self.name}: {self.price_for_buy} руб."
