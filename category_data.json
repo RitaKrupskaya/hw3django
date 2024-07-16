@@ -1,0 +1,1 @@
+[{"model": "catalog.category", "pk": 5, "fields": {"name": "Спортивное питание", "description": "Протеин, полезные перекусы и многое другое"}}, {"model": "catalog.category", "pk": 6, "fields": {"name": "Фрукты", "description": "Сезонные и экзотические фрукты"}}, {"model": "catalog.category", "pk": 7, "fields": {"name": "Овощи", "description": "С большим содержанием клетчатки"}}]
