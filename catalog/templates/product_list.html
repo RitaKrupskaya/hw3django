@@ -9,10 +9,9 @@
         <p class="lead"> {{ product.description }}</p>
       </div>
 
-          <img src="{{ product.image | media_filter }} ">
+          <img src="{{ product.image | media_filter }}" width="800" height="600">
 
         {% endfor%}
-
     </div>
-  </div>
+</div>
 {% endblock %}
