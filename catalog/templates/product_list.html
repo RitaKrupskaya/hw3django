@@ -8,9 +8,7 @@
         <h2 class="display-5"> {{ product.name }}</h2>
         <p class="lead"> {{ product.description }}</p>
       </div>
-
           <img src="{{ product.image | media_filter }}" width="800" height="600">
-
         {% endfor%}
     </div>
 </div>
