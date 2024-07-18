@@ -8,9 +8,9 @@
         <h2 class="display-5"> {{ product.name }}</h2>
         <p class="lead"> {{ product.description }}</p>
       </div>
-          <div class="bg-body-tertiary shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
-          <img src="{{ product.photo | media_filter }}">
-      </div>
+
+          <img src="{{ product.image | media_filter }} ">
+
         {% endfor%}
 
     </div>
