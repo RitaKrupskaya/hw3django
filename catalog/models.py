@@ -22,7 +22,7 @@ class Product(models.Model):
         max_length=50, verbose_name="Название", help_text="Название продукта"
     )
     description = models.TextField(
-        verbose_name="Описание", help_text="Описание продукта", blank=True, null=True
+        max_length=100, verbose_name="Описание", help_text="Описание продукта", blank=True, null=True
     )
     image = models.ImageField(
         upload_to="catalog/photo",
