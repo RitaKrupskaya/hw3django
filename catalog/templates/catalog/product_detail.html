@@ -1,0 +1,41 @@
+{% extends 'catalog/base.html'%}
+{% block content%}
+{% load my_tags %}
+<main>
+  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
+    <div class="col-md-6 p-lg-5 mx-auto my-5">
+      <h1 class="display-3 fw-bold">Fitness power</h1>
+      <h3 class="fw-normal text-muted mb-3">Ты то, что ты ешь</h3>
+      <div class="d-flex gap-3 justify-content-center lead fw-normal">
+        <p>
+          <a href="{% url 'catalog:product_create' %}" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+            Создай свой продукт
+          </a>
+        </p>
+        </a>
+      </div>
+    </div>
+    <div class="product-device shadow-sm d-none d-md-block"></div>
+    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+  </div>
+</main>
+
+<div class="col-12">
+<div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+    <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+      <div class="my-3 py-3">
+        <h2 class="display-5"> {{ object.name }}</h2>
+        <p class="lead"> {{ object.description }}</p>
+      </div>
+        <img src="{{ object.image | media_filter }}" width="800" height="600">
+    </div>
+</div>
+<div class="col-12">
+    <div class="text-center overflow-hidden">
+            <a class="btn btn-primary" href="{% url 'catalog:product_list'%}" role="button">Назад</a>
+        </div>
+</div>
+  </div>
+
+
+{% endblock %}

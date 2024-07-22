@@ -1,0 +1,43 @@
+{% extends 'catalog/base.html'%}
+{% load my_tags %}
+{% block content%}
+<main>
+  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
+    <div class="col-md-6 p-lg-5 mx-auto my-5">
+      <h1 class="display-3 fw-bold">Fitness power</h1>
+      <h3 class="fw-normal text-muted mb-3">Ты то, что ты ешь</h3>
+      <div class="d-flex gap-3 justify-content-center lead fw-normal">
+        <p>
+          <a href="{% url 'blog:post_create' %}" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+            Создай свой пост
+          </a>
+        </p>
+        </a>
+      </div>
+    </div>
+    <div class="product-device shadow-sm d-none d-md-block"></div>
+    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+  </div>
+</main>
+<div class="col-12">
+<div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+    {% for post in object_list%}
+    <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+      <div class="my-3 py-3">
+        <h2 class="display-5"> {{ post.title }}</h2>
+        <p class="lead"> {{ post.body }}</p>
+      </div>
+          <img src="{{ post.image | media_filter }}" width="800" height="600">
+          <a class="btn btn-primary" href="{% url 'blog:post_detail' post.pk %}" role="button">Посмотреть</a>
+          <a class="btn btn-primary" href="{% url 'blog:post_update' post.pk %}" role="button">Редактировать</a>
+          <a class="btn btn-primary" href="{% url 'blog:post_delete' post.pk %}" role="button">Удалить</a>
+        {% if post.is_published %}
+            <a class="btn btn-success" href="{% url 'blog:toggle_activity' post.pk %}">Опубликован</a>
+        {% else %}
+            <a class="btn btn-warning" href="{% url 'blog:toggle_activity' post.pk %}">Неопубликован</a>
+        {% endif %}
+        {% endfor%}
+    </div>
+</div>
+</div>
+{% endblock %}
