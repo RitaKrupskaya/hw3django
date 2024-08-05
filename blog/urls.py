@@ -7,7 +7,8 @@ from blog.views import (
     PostDetailView,
     PostCreateView,
     PostUpdateView,
-    PostDeleteView, toggle_activity,
+    PostDeleteView,
+    toggle_activity,
 )
 
 app_name = BlogConfig.name
