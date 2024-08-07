@@ -25,6 +25,13 @@
       <div class="my-3 py-3">
         <h2 class="display-5"> {{ product.name }}</h2>
         <p class="lead"> {{ product.description }}</p>
+          <p class="card-text">
+                {% for version in product.versions.all %}
+                {% if version.is_version_active %}
+                <p>Версия: {{version.version_name}} ({{version.version_number}}) </p>
+                {% endif %}
+                {% endfor %}
+                </p>
       </div>
           <img src="{{ product.image | media_filter }}" width="800" height="600">
         <div class="d-flex justify-content-between alingn-items-center">
