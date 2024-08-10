@@ -54,5 +54,4 @@ class ProductForm(StyleFormMixin, ModelForm):
 class VersionForm(StyleFormMixin, ModelForm):
     class Meta:
         model = Version
-        fields = '__all__'
-
+        fields = "__all__"
