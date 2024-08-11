@@ -12,22 +12,21 @@
     <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
   </div>
 </main>
-<div class="container">
-    <form method="post" action="" enctype="multipart/form-data" class="form-floating">
-        <div class="row text-start">
-                <div class="card mb-4 box-shadow mx-auto">
-                    <div class="card-header text-center">
-                        <h4 class="my-0 font-weight-normal">Профиль</h4>
-                    </div>
-                    <div class="card-body">
+<div class="col-12">
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <button type="submit" class="btn btn-block btn-outline-primary">Сохранить</button>
+                        <button type="submit" class="btn btn-primary">
+                        Обновить профиль
+                        </button>
+                    </form>
                     </div>
-
             </div>
         </div>
-    </form>
+            </div>
 </div>
-
 {% endblock %}
