@@ -39,16 +39,16 @@ def email_verification(request, token):
     user = get_object_or_404(User, token=token)
     user.is_active = True
     user.save()
-    return redirect(reverse('users:login'))
+    return redirect(reverse("users:login"))
 
 
 class ResetPasswordView(PasswordResetView):
-    template_name = 'users/reset_password.html'
+    template_name = "users/reset_password.html"
     form_class = PasswordResetForm
-    success_url = reverse_lazy('users:login')
+    success_url = reverse_lazy("users:login")
 
     def form_valid(self, form):
-        email = form.cleaned_data['email']
+        email = form.cleaned_data["email"]
         user = User.objects.get(email=email)
         if user:
             password = secrets.token_urlsafe(13)
@@ -60,10 +60,7 @@ class ResetPasswordView(PasswordResetView):
             )
             user.set_password(password)
             user.save()
-            return redirect(reverse('users:login'))
+            return redirect(reverse("users:login"))
 
         else:
-            return redirect(reverse('users:reset_password'))
-
-
-
+            return redirect(reverse("users:reset_password"))

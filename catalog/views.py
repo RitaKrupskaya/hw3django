@@ -8,19 +8,20 @@ from django.views.generic import (
     CreateView,
     UpdateView,
     DeleteView,
+    TemplateView,
 )
 
 from catalog.forms import ProductForm, VersionForm
 from catalog.models import Product, Version
 
 
-def contacts(request):
-    if request.method == "POST":
-        name = request.POST.get("name")
-        phone = request.POST.get("phone")
-        message = request.POST.get("message")
-        print(f"Имя: {name} \nНомер: {phone} \nСообщение: {message}")
-    return render(request, "contacts.html")
+class ContactsView(TemplateView):
+    template_name = "catalog/contacts.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["contacts"] = Product.objects.all()[:5]
+        return context
 
 
 class ProductListView(ListView):
@@ -50,10 +51,6 @@ class ProductDetailView(DetailView, LoginRequiredMixin):
         return super().form_valid(form)
 
 
-def user_account(request):
-    return render(request, "user_account.html")
-
-
 class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
@@ -63,7 +60,7 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
         product = form.save(commit=False)
         product.owner = self.request.user
         product.save()
-        return redirect('catalog:product_detail', product.pk)
+        return redirect("catalog:product_detail", product.pk)
 
 
 class ProductUpdateView(LoginRequiredMixin, UpdateView):
