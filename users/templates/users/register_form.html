@@ -1,13 +1,14 @@
 {% extends 'catalog/base.html'%}
 {% block content%}
+
 <div class="container">
     <form method="post" action="" enctype="multipart/form-data" class="form-floating">
         <div class="row text-start">
                 <div class="card mb-4 box-shadow mx-auto">
                     <div class="card-header text-center">
-                        <h2>Вход в личный кабинет</h2>
+                        <h2>Регистрация</h2>
                     </div>
-                    <div class="card-body text-center">
+                    <div class="card-body">
                         {% csrf_token %}
                         {{ form.as_p }}
                         <button type="submit" class="btn btn-block btn-outline-primary">Зарегистрироваться</button>
@@ -17,4 +18,5 @@
         </div>
     </form>
 </div>
+
 {% endblock %}

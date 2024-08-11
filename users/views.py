@@ -14,6 +14,7 @@ from users.models import User
 
 class UserCreateView(CreateView):
     model = User
+    template_name = "users/register_form.html"
     form_class = UserRegisterForm
     success_url = reverse_lazy("users:login")
 
@@ -68,8 +69,9 @@ class ResetPasswordView(PasswordResetView):
 
 class UserProfileView(UpdateView):
     model = User
+    template_name = "users/profile_form.html"
     form_class = UserProfileForm
-    success_url = reverse_lazy("users:edit_profile")
+    success_url = reverse_lazy("users:profile")
 
     def get_object(self, queryset=None):
         return self.request.user
