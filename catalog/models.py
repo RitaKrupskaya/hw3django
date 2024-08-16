@@ -63,6 +63,9 @@ class Product(models.Model):
         blank=True,
         null=True,
     )
+    is_published = models.BooleanField(
+        default=False, verbose_name="Опубликовано", help_text="Опубликовать продукт"
+    )
 
     def __str__(self):
         return f"{self.name}: {self.price_for_buy} руб."
@@ -70,6 +73,12 @@ class Product(models.Model):
     class Meta:
         verbose_name = "Продукт"
         verbose_name_plural = "Продукты"
+        ordering = ["name", "category"]
+        permissions = [
+            ("can_cancel_publication", "Can cancel publication of product"),
+            ("can_change_description", "Can change description of product"),
+            ("can_change_product_category", "Can change product category"),
+        ]
 
 
 class Version(models.Model):
