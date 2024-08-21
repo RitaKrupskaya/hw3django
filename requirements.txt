@@ -11,3 +11,4 @@ black
 pillow
 ipython
 pytils
+redis
